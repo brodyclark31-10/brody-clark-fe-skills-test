@@ -58,4 +58,39 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 # Solution Details
 
+## Architecture Choices
+
+### State Management
+
+- **Jotai Atoms** - Lightweight atomic state management for theme toggling. Chose Jotai over heavier solutions like Redux for its simplicity and minimal boilerplate while still providing reactive state updates across components.
+
+### UI Components
+
+- **Material UI (MUI)** - Used MUI for consistent, accessible components including:
+  - `DataGrid` for launch data display with built-in sorting, filtering, and pagination
+  - `Select/Dropdown` for data source selection (historical vs upcoming launches)
+  - Theme provider integration for dark/light mode support
+
+### Data Fetching
+
+- **Apollo Client + TanStack Query** - Hybrid approach leveraging Apollo for GraphQL communication with the SpaceX API and TanStack Query patterns for caching and request management
+
+### Project Structure
+
+```
+src/
+├── components/    # Reusable UI components
+├── hooks/         # Custom React hooks for data fetching and state
+├── types/         # TypeScript type definitions
+├── queries/       # GraphQL query definitions
+└── config/        # Configuration including table columns
+```
+
+### Design Principles
+
+- **Modularization** - Separated concerns into distinct layers (components, hooks, queries, types)
+- **Scalability** - Component architecture supports adding new data sources and views
+- **Extendability** - Type-safe patterns and modular hooks make it easy to extend functionality
+- **Local State** - DataTable manages its own internal state for UI interactions while receiving data via props
+
 # Future Work

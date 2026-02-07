@@ -94,3 +94,34 @@ src/
 - **Local State** - DataTable manages its own internal state for UI interactions while receiving data via props
 
 # Future Work
+
+## Claude Code Extension Points
+
+Added `CLAUDE.md` instruction files at key extension points (`src/types/`, `src/graphql/queries/`, `src/config/columns/`) to enable AI-assisted development. These provide step-by-step checklists for adding new GraphQL data types to the application.
+
+**Status:** Initial implementation complete, needs validation.
+
+**Next steps to productionize:**
+
+- [ ] Test the full workflow by having Claude add a new endpoint (e.g., `landpads`, `cores`, `history`)
+- [ ] Validate that generated code compiles and renders correctly
+- [ ] Refine instructions based on any edge cases discovered during testing
+- [ ] Add error handling guidance for malformed API responses
+- [ ] Consider adding a script or test to validate the extension point pattern
+
+## UI/UX Polish
+
+- [ ] Improve loading state animations and skeleton loaders for better perceived performance
+- [ ] Add transition effects when switching between data types
+- [ ] Refine error state styling to be more user-friendly
+- [ ] Consider adding empty state illustrations
+
+## Package Abstraction
+
+This pattern could be extracted into a reusable package for organization-wide use:
+
+- [ ] Abstract the core data table + GraphQL wiring into a standalone package
+- [ ] Create a CLI or generator for scaffolding new data types
+- [ ] Publish as an internal npm package with proper versioning
+- [ ] Add configuration options for customizing themes, column defaults, and query behaviors
+- [ ] Document integration patterns for different project setups (Next.js, Vite, etc.)
